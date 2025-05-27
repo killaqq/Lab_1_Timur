@@ -1,0 +1,34 @@
+﻿@using Lab_1_Timur.Models 
+@model IEnumerable<Employee>
+
+@{
+    ViewData["Title"] = "Список співробітників";
+}
+
+<h1>Список співробітників</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Код</th>
+        <th>ПІБ</th>
+        <th>Вік</th>
+        <th>Стать</th>
+        <th>Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var employee in Model)
+    {
+        <tr>
+            <td>@employee.EmployeeCode</td>
+            <td>@employee.FullName</td>
+            <td>@employee.Age</td>
+            <td>@employee.Gender</td>
+            <td>
+                <a asp-controller="Employee" asp-action="Details" asp-route-id="@employee.EmployeeCode">Деталі</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
